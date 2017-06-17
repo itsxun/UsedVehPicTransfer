@@ -11,7 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 
@@ -19,6 +19,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.7
 
 repositories {
+	mavenLocal()
+	maven { url "http://maven.aliyun.com/nexus/content/groups/public"}
 	mavenCentral()
 }
 
@@ -28,6 +30,15 @@ configurations {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
-	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
+	compile 'org.springframework:spring-context-support:4.3.9.RELEASE'
+	compile 'commons-beanutils:commons-beanutils:20030211.134440'
+	compile 'org.springframework:spring-tx:4.3.9.RELEASE'
+	compile 'org.quartz-scheduler:quartz:2.3.0'
+	compile 'org.apache.commons:commons-io:1.3.2'
+	compile 'dom4j:dom4j:1.6.1'
+	compile 'org.slf4j:slf4j-api:1.7.21'
+	compile 'ch.qos.logback:logback-core:1.1.7'
+	compile 'ch.qos.logback:logback-classic:1.1.7'
+	compile 'ch.qos.logback:logback-access:1.1.3'
 }
