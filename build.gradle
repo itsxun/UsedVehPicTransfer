@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.4.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -19,26 +19,43 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.7
 
 repositories {
-	mavenLocal()
-	maven { url "http://maven.aliyun.com/nexus/content/groups/public"}
-	mavenCentral()
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    mavenCentral()
+}
+
+war {
+    baseName = 'UsedVehPicTransfer'
+}
+
+processResources{
+    from{'src/main/java'}{
+        include '**/*'
+    }
 }
 
 configurations {
-	providedRuntime
+    providedRuntime
+//    sourceSets.main.java.srcDirs = ['src']
+//    sourceSets.main.resources.srcDirs = sourceSets.main.java.srcDirs
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-tomcat')
-	compile 'org.springframework:spring-context-support:4.3.9.RELEASE'
-	compile 'commons-beanutils:commons-beanutils:20030211.134440'
-	compile 'org.springframework:spring-tx:4.3.9.RELEASE'
-	compile 'org.quartz-scheduler:quartz:2.3.0'
-	compile 'org.apache.commons:commons-io:1.3.2'
-	compile 'dom4j:dom4j:1.6.1'
-	compile 'org.slf4j:slf4j-api:1.7.21'
-	compile 'ch.qos.logback:logback-core:1.1.7'
-	compile 'ch.qos.logback:logback-classic:1.1.7'
-	compile 'ch.qos.logback:logback-access:1.1.3'
+    compile('org.springframework.boot:spring-boot-starter-web')
+    providedCompile('org.springframework.boot:spring-boot-starter-tomcat')
+    compile 'org.springframework:spring-context-support:4.3.9.RELEASE'
+    compile 'commons-beanutils:commons-beanutils:20030211.134440'
+    compile 'org.springframework:spring-tx:4.3.9.RELEASE'
+    compile 'org.quartz-scheduler:quartz:2.3.0'
+//    compile 'org.apache.commons:commons-io:1.3.2'
+    compile 'commons-io:commons-io:2.5'
+    compile 'dom4j:dom4j:1.6.1'
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'ch.qos.logback:logback-core:1.1.7'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile 'ch.qos.logback:logback-access:1.1.3'
+    compile 'org.apache.commons:commons-exec:1.3'
+    compile group: 'ch.ethz.ganymed', name: 'ganymed-ssh2', version: 'build210'
+    compile 'com.google.code.gson:gson:2.7'
 }

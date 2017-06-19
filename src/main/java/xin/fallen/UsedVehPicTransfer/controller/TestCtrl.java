@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestCtrl {
 
-    @RequestMapping("/ping")
+    @RequestMapping("/ruok")
     public String ping() throws SchedulerException {
-        return "pong";
+        return "fine";
     }
 
 }

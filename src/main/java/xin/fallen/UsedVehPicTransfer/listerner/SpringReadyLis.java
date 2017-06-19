@@ -20,7 +20,6 @@ import xin.fallen.UsedVehPicTransfer.util.FileFinder;
 public class SpringReadyLis implements ApplicationListener<ContextRefreshedEvent> {
     private static Logger log = LoggerFactory.getLogger("logger");
 
-
     public void onApplicationEvent(ContextRefreshedEvent e) {
         ConfigLoader.load(FileFinder.find("config.xml"), StaticConfig.class);
         log.info("<==========================Config Load Complete==========================>");
